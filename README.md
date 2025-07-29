@@ -11,6 +11,8 @@
 
 ### Expected API Response Output
 
+### API BASE URL: `https://ai.perkinsfund.org`
+
 ```json
 {
   "copyright": "(c) PCEF all rights reserved", (only shown if no API key is passed)
