@@ -4,7 +4,7 @@
 
 </div>
 
-### Available Endpoints
+### Available Tools
 
 - [AURA](AURA/README.md)
 - [Yara Rule Playground](YARA/README.md)
