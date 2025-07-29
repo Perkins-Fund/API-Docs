@@ -19,7 +19,9 @@ Headers (optional): X-Api-Key: `API KEY`
 #### Example request
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -d '{"rule": "rule dummy { condition: true }"}' https://ai.perkinsfund.org/api/yara/build
+curl -X POST -H "Content-Type: application/json" \
+   -d '{"rule": "rule dummy { condition: true }"}' \
+   https://ai.perkinsfund.org/api/yara/build
 ```
 
 #### Expected outputs
@@ -59,7 +61,9 @@ Headers (optional): X-Api-Key: `API KEY`
 #### Example request
 
 ```bash
-curl -F "yara_rule=@rule.yar" -F "test_file=@sample.exe" https://ai.perkinsfund.org/api/yara/test
+curl -F "yara_rule=@rule.yar" \
+  -F "test_file=@sample.exe" \
+  https://ai.perkinsfund.org/api/yara/test
 ```
 
 #### Expected outputs
@@ -103,7 +107,10 @@ Headers (required): X-File-Type: benign or malware
 #### Example request
 
 ```bash
-curl -X POST -H "Content-Type: application/json" -H "x-file-type: benign" -d '{"rule": "rule dummy { condition: true }"}' https://ai.perkinsfund.org/api/yara/scan
+curl -X POST -H "Content-Type: application/json" \
+  -H "x-file-type: benign" \
+  -d '{"rule": "rule dummy { condition: true }"}' \
+  https://ai.perkinsfund.org/api/yara/scan
 ```
 
 #### Expected outputs

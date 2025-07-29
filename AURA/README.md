@@ -117,7 +117,10 @@ Headers (required): X-Api-Key: API KEY
 #### Example request
 
 ```bash
-curl -XPOST -H "x-api-key: USER KEY" -H "content-type: application/json" --data '{"sha256":"USER SHA256 HASH"}' https://ai.perkinsfund.org/api/search
+curl -XPOST -H "x-api-key: USER KEY" \
+  -H "content-type: application/json" \
+  --data '{"sha256":"USER SHA256 HASH"}' \
+  https://ai.perkinsfund.org/api/search
 ```
 
 #### Expected outputs
