@@ -11,8 +11,11 @@
 ### File Prediction Endpoint
 
 Endpoint: `/api/predict`
+
 Request type: POST
+
 Data type: File
+
 Headers (optional): X-Api-Key: API KEY
 
 ##### NOTE: The AI currently only classifies ELF and Windows PE executable file formats. Others will be "unknown".
@@ -56,8 +59,11 @@ Unsuccessful:
 ### Latest Scans Endpoint
 
 Endpoint: `/api/latest`
+
 Request type: POST
+
 Data type: 
+
 Headers (optional): X-Api-Key: API KEY
 
 ##### NOTE: This POST request does not take any parameters, it will return the last 50 scans
@@ -111,8 +117,11 @@ Unsuccessful:
 ### Search Scans Endpoint
 
 Endpoint: `/api/search`
+
 Request type: POST
+
 Data type: JSON
+
 Headers (required): X-Api-Key: API KEY
 
 ##### NOTE: This endpoint requires an API key. You can get an API key here: https://perkinsfund.org/login

@@ -11,8 +11,11 @@
 ### Building Yara Rules Endpoint
 
 Endpoint: `/api/yara/build`
+
 Request type: POST
+
 Data type: JSON
+
 Headers (optional): X-Api-Key: `API KEY`
 
 ##### NOTE: Compiles the provided Yara rule and returns whether the rule is valid or not.
@@ -54,8 +57,11 @@ Unsuccessful:
 ### Testing Yara Rules Endpoint
 
 Endpoint: `/api/yara/test`
+
 Request type: POST
+
 Data type: multipart/form-data
+
 Headers (optional): X-Api-Key: `API KEY`
 
 ##### NOTE: Tests a Yara rule against a provided uploaded file.
@@ -100,9 +106,13 @@ Unsuccessful:
 ### Scanning Yara Rules Endpoint
 
 Endpoint: `/api/yara/scan`
+
 Request type: POST
+
 Data type: JSON
+
 Headers (optional): X-Api-Key: `API KEY`
+
 Headers (required): X-File-Type: benign or malware
 
 ##### NOTE: Runs the provided Yara rule against built-in files of the specific type specified in the X-File-Type header.
