@@ -1,8 +1,8 @@
 # Yara Rule Playground API documentation
 
-- [Build Yara Rule]()
-- [Test Yara Rule]()
-- [Scan with Yara Rule]()
+- [Build Yara Rule](#building-yara-rules-endpoint)
+- [Test Yara Rule](#testing-yara-rules-endpoint)
+- [Scan with Yara Rule](#scanning-yara-rules-endpoint)
 
 ### API BASE URL: `https://ai.perkinsfund.org`
 
@@ -14,6 +14,7 @@ Endpoint: `/api/yara/build`
 Request type: POST
 Data type: JSON
 Headers (optional): X-Api-Key: `API KEY`
+
 ##### NOTE: Compiles the provided Yara rule and returns whether the rule is valid or not.
 
 #### Example request
@@ -56,6 +57,7 @@ Endpoint: `/api/yara/test`
 Request type: POST
 Data type: multipart/form-data
 Headers (optional): X-Api-Key: `API KEY`
+
 ##### NOTE: Tests a Yara rule against a provided uploaded file.
 
 #### Example request
@@ -102,6 +104,7 @@ Request type: POST
 Data type: JSON
 Headers (optional): X-Api-Key: `API KEY`
 Headers (required): X-File-Type: benign or malware
+
 ##### NOTE: Runs the provided Yara rule against built-in files of the specific type specified in the X-File-Type header.
 
 #### Example request
