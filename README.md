@@ -8,6 +8,7 @@
 
 - [AURA](AURA/README.md)
 - [Yara Rule Playground](YARA/README.md)
+- [Ransom Note Comparison](RANSOM/README.md)
 
 ### Expected API Response Output
 
