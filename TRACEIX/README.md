@@ -94,7 +94,7 @@ curl -X POST -H "x-api-key: YOUR_API_KEY" \
 
 Success:
 
-**NOTE:** If the status is completed, the results will be the results from the endpoint for capa and exif. 
+**NOTE:** When the status is completed, related classification and metadata can be retrieved using the hash search and extraction endpoints below.
 
 ```json
 {
@@ -102,7 +102,7 @@ Success:
   "error": {},
   "results": {
     "uuid": "YOUR_UUID_HERE",
-    "status": "STATUS"
+    "status": "queued"  // or "processing", "completed", "error"
   },
   "request_timestamp": 1764610085.25132
 }
@@ -154,7 +154,6 @@ Success:
       {
         "name": "persistence via registry run key",
         "attack_id": "T1060",
-        "...": "other fields"
       }
     ]
   }
@@ -354,14 +353,18 @@ Success:
 
 ```json
 {
-  "success": true,
+  "copyright": "(c) PCEF all rights reserved",
   "error": {},
+  "request_timestamp": 1762267116.2708333,
   "results": [
-    {
-      "cid": "bafybeigdyr...",
-      ...
-    }
-  ]
+    { "cid": "...", "sha256": "..." },
+    ...
+  ],
+  "sponsor": {
+    "link": "...",
+    "title": "..."
+  },
+  "success": true
 }
 ```
 
@@ -369,11 +372,13 @@ Unsuccessful:
 
 ```json
 {
-  "success": false,
+  "copyright": "(c) PCEF all rights reserved",
   "error": {
     "error_message": "MESSAGE"
   },
-  "results": []
+  "request_timestamp": 1762267116.2708333,
+  "results": [],
+  "success": false
 }
 ```
 
@@ -405,12 +410,41 @@ Success:
 
 ```json
 {
-  "success": true,
+  "copyright": "(c) PCEF all rights reserved",
   "error": {},
+  "request_timestamp": 1762267143.519864,
   "results": {
-    "cid": "bafybeigdyr...",
-    ...
-  }
+    "decrypted_training_data": {
+      ...
+    },
+    "metadata": {
+      "model_information": {
+        "model_accuracy": "91.64%",
+        "model_version": "o1"
+      },
+      "payment_transaction": {
+        "amount_paid": "...",
+        "payment_tx": "...",
+        "payment_tx_url": "https://solscan.io/tx/...",
+        "thrt_price_at_payment": "..."
+      },
+      "upload_information": {
+        "file_sha_hash": "...",
+        "license": "CC BY 4.0",
+        "upload_timestamp": "..."
+      }
+    },
+    "model_classification_info": {
+      "date_classified_on": "...",
+      "identified_class": "...",
+      "verdict_seconds": "..."
+    }
+  },
+  "sponsor": {
+    "link": "...",
+    "title": "..."
+  },
+  "success": true
 }
 ```
 
@@ -418,11 +452,15 @@ Unsuccessful:
 
 ```json
 {
-  "success": false,
-  "error": {
-    "error_message": "CID not found"
+  "copyright": "(c) PCEF all rights reserved",
+  "error": { "error_message": "Invalid CID provided" },
+  "request_timestamp": 1762267194.2231338,
+  "results": null,
+  "sponsor": {
+    "link": "...",
+    "title": "..."
   },
-  "results": {}
+  "success": false
 }
 ```
 
@@ -454,17 +492,17 @@ Success:
 
 ```json
 {
-  "success": true,
-  "error": {},
-  "results": {
-    "sha_hash": "FILE_SHA256",
-    "datasets": [
-      {
-        "cid": "bafybeigdyr...",
-        ...
-      }
-    ]
-  }
+  "data": {
+    "file_data": {
+      "file_size": "2251",
+      "sha_hash": "10b740b968f59cb9d8a4167f72b1773f5e69269b1430a917a6e3e762d1a7526c"
+    },
+    "metadata": {
+      "cid": "...",
+      "rid": "..."
+    }
+  },
+  "success": true
 }
 ```
 
@@ -472,10 +510,7 @@ Unsuccessful:
 
 ```json
 {
-  "success": false,
-  "error": {
-    "error_message": "Hash not found in any dataset"
-  },
-  "results": {}
+  "data": {},
+  "success": false
 }
 ```
