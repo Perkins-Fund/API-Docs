@@ -42,22 +42,26 @@ Success:
 ```json
 {
   "error": {},
-  "request_timestamp": 1765990715.3709326,
+  "request_timestamp": 1765994865.1905847,
   "results": {
+    "agent_uuid": "AGENT UUID",
     "cortex_agent": {
       "agent_config": {
-        "accepted_file_type": "FILES",
-        "delivery_style": "raw OR minimal OR summary",
+        "accepted_file_type": "FILE TYPES",
+        "delivery_style": "raw OR summary OR minimal",
         "features": "feature1,feature2,...",
-        "max_file_size": MAX SIZE IN BYTES
+        "max_file_size": SIZE IN BYTES
       },
       "metadata": {
-        "name": "YOUR AGENT NAME",
-        "processed_files": INTEGER OF TOTAL FILES PROCESSED,
-        "tags": "tag1,tag2,tag3,...",
-        "timestamp": "UTC ISO timestamp"
+        "name": "...",
+        "stats": {
+          "processed_files": TOTAL FILES
+        },
+        "tags": "tag1,tag2,...",
+        "timestamp": "2025-12-16T19:57:13.443000+00:00"
       }
-    }
+    },
+    "schema_version": 1
   },
   "success": true
 }
