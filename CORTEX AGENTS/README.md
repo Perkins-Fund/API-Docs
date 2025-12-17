@@ -5,6 +5,8 @@
 * [Check Agent Run Status](#check-agent-run-status)
 * [SDKs](https://github.com/Perkins-Fund/Traceix-SDK)
 
+> THIS FEATURE IS NOT RELEASED YET
+
 ### API BASE URL: `https://ai.perkinsfund.org`
 
 ---
