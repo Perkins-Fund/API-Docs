@@ -6,11 +6,21 @@
 
 ### Available Tools
 
-- [Traceix](TRACEIX/README.md)
-- [Traciex Cortex Agents](CORTEX%20AGENTS/README.md)
-- [AURA](AURA/README.md)
-- [Yara Rule Playground](YARA/README.md)
-- [Ransom Note Comparison](RANSOM/README.md)
+- [Traceix](TRACEIX/README.md)  
+  Upload files for classification, generate CAPA/EXIF/YARA outputs, and retrieve past results by SHA-256. Includes public IPFS dataset listing and lookup.
+
+- [Traceix Cortex Agents](CORTEX%20AGENTS/README.md)  
+  Agent lifecycle + operations: check-in, fetch agent configuration/metadata, run queued analyses, poll job status, and submit/retrieve endpoint-driven alerts (ownership enforced per API key).
+
+- [AURA](AURA/README.md)  
+  Lightweight executable triage API: upload a file for a fast verdict, view the latest scans, or search historical scans by SHA-256 (PE/ELF supported; others return `unknown`).
+
+- [Yara Rule Playground](YARA/README.md)  
+  Build and validate YARA rules, test them against an uploaded sample, or scan against built-in benign/malware corpora to see hits and iterate quickly.
+
+- [Ransom Note Comparison](RANSOM/README.md)  
+  Identify likely ransomware families by ransom note similarity and search for known public decryptor links using keywords.
+
 
 ### Expected API Response Output
 
