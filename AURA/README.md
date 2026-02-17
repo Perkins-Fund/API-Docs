@@ -1,5 +1,7 @@
 # AURA API Documentation
 
+AURA is a lightweight malware triage API that classifies uploaded executable files and lets you look up recent or specific scan results by SHA-256. Currently supports Windows PE and Linux ELF; other formats return `unknown`.
+
 - [File Prediction](#file-prediction-endpoint)
 - [Latest Scans](#latest-scans-endpoint)
 - [Search Scans](#search-scans-endpoint)

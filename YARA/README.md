@@ -1,5 +1,7 @@
 # Yara Rule Playground API documentation
 
+A small YARA utility API for iterating fast: validate/compile rules, test them against a file you upload, or run them against a built-in benign/malware sample set to see what they hit.
+
 - [Build Yara Rule](#building-yara-rules-endpoint)
 - [Test Yara Rule](#testing-yara-rules-endpoint)
 - [Scan with Yara Rule](#scanning-yara-rules-endpoint)

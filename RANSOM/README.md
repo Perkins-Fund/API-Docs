@@ -1,7 +1,9 @@
 # Ransom Note Comparison
 
+Upload a ransom note to identify likely ransomware families by similarity, or search by a keyword to find known public decryptor links when they exist.
+
 - [Compare Notes](#compare-notes)
-- [Search for Decryptors](#latest-scans-endpoint)
+- [Search for Decryptors](#search-decryptors)
 
 ### API BASE URL: `https://ai.perkinsfund.org`
 

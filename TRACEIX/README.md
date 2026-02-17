@@ -1,5 +1,7 @@
 # Traceix API & SDK Endpoints
 
+Traceix provides file upload + prediction, post-processing extractors (CAPA/EXIF/YARA), hash-based retrieval of prior results, and public IPFS dataset browsing/search all from a single API surface.
+
 * [AI Prediction Upload](#ai-prediction-upload)
 * [Check Upload Status](#check-upload-status)
 * [CAPA Extraction](#capa-extraction)

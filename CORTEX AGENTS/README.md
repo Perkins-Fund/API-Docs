@@ -1,4 +1,6 @@
-# Cortex Agents API & SDK Endpoints
+# Traceix Cortex Agents API & SDK Endpoints
+
+Cortex Agents are lightweight "remote triage workers" that let your client check in, fetch its configuration, submit files for analysis, poll for results, and emit alerts — all under a consistent response envelope and strict ownership enforcement per API key.
 
 * [Common Response Envelope](#common-response-envelope)
 * [Agent Check-in](#agent-check-in)
@@ -8,8 +10,6 @@
 * [Submit Agent Alert](#submit-agent-alert)
 * [Get Agent Alerts](#get-agent-alerts)
 * [SDKs](#sdks)
-
-> **NOTE:** Some features may not be publicly released yet.
 
 ### API Base URL
 
