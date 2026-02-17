@@ -4,8 +4,10 @@
 * [Check Upload Status](#check-upload-status)
 * [CAPA Extraction](#capa-extraction)
 * [EXIF Extraction](#exif-extraction)
+* [YARA Rules](#yara-rule-creation)
 * [Search CAPA by Hash](#search-capa-by-hash)
 * [Search EXIF by Hash](#search-exif-by-hash)
+* [Search YARA by Hash](#search-yara-by-hash)
 * [List Public IPFS Datasets](#list-public-ipfs-datasets)
 * [Get Public IPFS Dataset](#get-public-ipfs-dataset)
 * [Search IPFS Dataset by Hash](#search-ipfs-dataset-by-hash)
@@ -122,6 +124,7 @@ Unsuccessful (missing UUID, invalid UUID, etc.):
 
 ---
 
+
 ### CAPA Extraction
 
 Endpoint: `/api/traceix/v1/capa`
@@ -222,6 +225,52 @@ Unsuccessful:
 ```
 
 ---
+
+### Yara Rule Creation
+
+Endpoint: `/api/v1/traceix/ioc`
+
+Request type: POST
+
+Data type: File
+
+Headers: `X-Api-Key: API KEY`
+
+##### NOTE: This endpoint requires a file upload (`multipart/form-data`).
+
+#### Example request
+
+```bash
+curl -H "x-api-key: YOUR_API_KEY" \
+     -F "file=@/path/to/file.exe" \
+     https://ai.perkinsfund.org/api/v1/traceix/ioc
+```
+
+#### Expected outputs
+
+Success:
+
+```json
+{
+  "data": {
+    "yara_rule": "rule TraceixRuleGenerator_... { ... }"
+  },
+  "error": {},
+  "success": true
+}
+```
+
+Unsuccessful (JSON body instead of file):
+
+```json
+{
+  "data": {},
+  "error": {
+    "msg": "This endpoint requires a file"
+  },
+  "success": false
+}
+```
 
 ### Search CAPA by Hash
 
@@ -325,6 +374,55 @@ Unsuccessful:
     "error_message": "No matching record for provided SHA256"
   },
   "results": {}
+}
+```
+
+---
+
+### Search YARA by Hash
+
+Endpoint: `/api/v1/traceix/ioc/hash`
+
+Request type: POST
+
+Data type: JSON
+
+Headers: `X-Api-Key: API KEY`
+
+##### NOTE: Uses the file SHA256 hash to retrieve a previously generated YARA rule.
+
+#### Example request
+
+```bash
+curl -X POST -H "x-api-key: YOUR_API_KEY" \
+     -H "content-type: application/json" \
+     --data '{"sha256":"FILE_SHA256"}' \
+     https://ai.perkinsfund.org/api/v1/traceix/ioc/hash
+```
+
+#### Expected outputs
+
+Success:
+
+```json
+{
+  "data": {
+    "rule": "rule TraceixRuleGenerator_... { ... }"
+  },
+  "error": {},
+  "success": true
+}
+```
+
+Unsuccessful (no rule for hash / bad hash):
+
+```json
+{
+  "data": {},
+  "error": {
+    "msg": "No Yara rule from provided sha hash"
+  },
+  "success": false
 }
 ```
 
