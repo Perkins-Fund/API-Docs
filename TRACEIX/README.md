@@ -1,7 +1,6 @@
 # Traceix API & SDK Endpoints
 
-Traceix provides file upload + prediction, post-processing extractors (CAPA/EXIF/YARA), hash-based retrieval of prior results, and public IPFS dataset browsing/search all from a single API surface.
-
+Traceix provides file upload + prediction, post-processing extractors (CAPA/EXIF/YARA), antivirus scanning and hash-based AV lookup, hash-based retrieval of prior results, and public IPFS dataset browsing/search all from a single API surface.
 * [AI Prediction Upload](#ai-prediction-upload)
 * [Check Upload Status](#check-upload-status)
 * [CAPA Extraction](#capa-extraction)
@@ -10,6 +9,9 @@ Traceix provides file upload + prediction, post-processing extractors (CAPA/EXIF
 * [Search CAPA by Hash](#search-capa-by-hash)
 * [Search EXIF by Hash](#search-exif-by-hash)
 * [Search YARA by Hash](#search-yara-by-hash)
+* [AV Hash Lookup](#av-hash-lookup)
+* [AV File Scan](#av-file-scan)
+* [AV Scan Status](#av-scan-status)
 * [List Public IPFS Datasets](#list-public-ipfs-datasets)
 * [Get Public IPFS Dataset](#get-public-ipfs-dataset)
 * [Search IPFS Dataset by Hash](#search-ipfs-dataset-by-hash)
@@ -425,6 +427,167 @@ Unsuccessful (no rule for hash / bad hash):
     "msg": "No Yara rule from provided sha hash"
   },
   "success": false
+}
+```
+
+---
+
+### AV File Scan
+
+Endpoint: `/api/v1/traceix/av/scan`
+
+Request type: POST
+
+Data type: File (`multipart/form-data`)
+
+Headers: `X-Api-Key: API KEY`
+
+##### NOTE: Submitting a file returns one or more asynchronous scan jobs. Use the returned `uuid` values with the AV status endpoint below.
+
+#### Example request
+
+```bash
+curl -H "x-api-key: YOUR_API_KEY" \
+     -F "file=@/path/to/file" \
+     https://ai.perkinsfund.org/api/v1/traceix/av/scan
+````
+
+#### Expected outputs
+
+Success:
+
+```json
+{
+  "success": true,
+  "error": {},
+  "request_timestamp": 1774623901.183456,
+  "results": [
+    {
+      "engine": "ENGINE_NAME",
+      "status": "PENDING",
+      "uuid": "UUID"
+    },
+    ...
+  ]
+}
+```
+
+Unsuccessful:
+
+```json
+{
+  "success": false,
+  "error": {
+    "error_message": "MESSAGE"
+  },
+  "results": null
+}
+```
+
+---
+
+### AV Scan Status
+
+Endpoint: `/api/v1/traceix/av/status`
+
+Request type: POST
+
+Data type: JSON
+
+Headers: `X-Api-Key: API KEY`
+
+##### NOTE: Requires a valid `uuid` returned from `/api/v1/traceix/av/scan`.
+
+#### Example request
+
+```bash
+curl -X POST -H "x-api-key: YOUR_API_KEY" \
+     --data '{"uuid":"SCAN_UUID"}' \
+     https://ai.perkinsfund.org/api/v1/traceix/av/status
+````
+
+#### Expected outputs
+
+Success:
+
+```json
+{
+  "success": true,
+  "error": {},
+  "request_timestamp": 1774624038.659553,
+  "results": {
+    "engine": "ENGINE_NAME",
+    "engine_type": "ENGINE_TYPE",
+    "verdict": "VERDICT"
+  }
+}
+```
+
+Unsuccessful:
+
+```json
+{
+  "success": false,
+  "error": {
+    "error_message": "MESSAGE"
+  },
+  "results": null
+}
+```
+
+---
+
+### AV Hash Lookup
+
+Endpoint: `/api/v1/traceix/av/lookup`
+
+Request type: POST
+
+Data type: JSON
+
+Headers: `X-Api-Key: API KEY`
+
+##### NOTE: Uses a file SHA256 hash to retrieve prior antivirus / reputation results when available.
+
+#### Example request
+
+```bash
+curl -X POST -H "x-api-key: YOUR_API_KEY" \
+     --data '{"sha256":"FILE_SHA256"}' \
+     https://ai.perkinsfund.org/api/v1/traceix/av/lookup
+````
+
+#### Expected outputs
+
+Success:
+
+```json
+{
+  "success": true,
+  "error": {},
+  "request_timestamp": 1774623825.928707,
+  "results": [
+    {
+      "engine": "ENGINE_NAME",
+      "engine_type": "ENGINE_TYPE",
+      "file_hash": "FILE_SHA256",
+      "verdict": "Safe" || "Malicious" || "Unknown" || "Failed"
+    },
+    ...
+  ]
+}
+```
+
+Unsuccessful:
+
+```json
+{
+  "success": false,
+  "error": {
+    "error_message": "Invalid API key provided"
+  },
+  "request_timestamp": 1774623769.575932,
+  "results": null
 }
 ```
 
