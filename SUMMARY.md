@@ -5,6 +5,9 @@
   - Traceix Endpoints
     - [Traceix API](TRACEIX/README.md)
     - [Cortex Agents API](CORTEX%20AGENTS/README.md)
+  
+  - OnlyVulns Endpoints
+    - [OnlyVulns API](ONLYVULNS/README.md)
 
   - PCEF Public Endpoints
     - [AURA API](AURA/README.md)

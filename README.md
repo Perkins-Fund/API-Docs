@@ -9,6 +9,9 @@
 - [Traceix](TRACEIX/README.md)  
   Upload files for classification, generate CAPA/EXIF/YARA outputs, and retrieve past results by SHA-256. Includes public IPFS dataset listing and lookup.
 
+- [OnlyVulns](ONLYVULNS/README.md)
+  Coming soon...
+
 - [Traceix Cortex Agents](CORTEX%20AGENTS/README.md)  
   Agent lifecycle + operations: check-in, fetch agent configuration/metadata, run queued analyses, poll job status, and submit/retrieve endpoint-driven alerts (ownership enforced per API key).
 
