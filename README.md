@@ -47,6 +47,25 @@
 }
 ```
 
+##### ONLYVULNS API BASE URL: `https://api.onlyvulns.org`
+
+```json
+{
+  "error": {
+    "error_id": "..." IF ERROR,
+    "error_string": "..."
+  },
+  "metadata": {
+    "note": ... (IF FREE REQUEST),
+    "request_id": "...",
+    "request_timestamp": unix timestamp UTC
+  },
+  "results": ...,
+  "success": true or false
+}
+```
+
+
 ##### Field descriptions
 
 - `error` – Contains error messages if any occurred. Will be empty dictionary on success.
